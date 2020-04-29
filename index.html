@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function getRandomInt(){
+            return Math.floor(Math.random() * Math.floor(3));
+        }
+        function computerPlay(){
+            let randomInt = getRandomInt();
+            switch (randomInt) {
+                case 0:
+                    return "Rock";
+                    break;
+                case 1:
+                    return "Paper";
+                    break;
+                default:
+                    return "Scissors"
+                    break;
+            }
+        }
+    </script>
+</body>
