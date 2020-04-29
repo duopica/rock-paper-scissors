@@ -5,13 +5,15 @@
 </head>
 <body>
     <script>
+        let playerScore = 0;
+        let computerScore = 0;
 
-        function getRandomInt(){
-            return Math.floor(Math.random() * Math.floor(3));
-        }
+        //function getRandomInt(){
+        //    return Math.floor(Math.random() * Math.floor(3));
+        //}
 
         function computerPlay(){
-            let randomInt = getRandomInt();
+            let randomInt = Math.floor(Math.random() * Math.floor(3));
             switch (randomInt) {
                 case 0:
                     return "Rock";
@@ -29,41 +31,65 @@
             if (playerSelection == "rock") {
                 switch (computerSelection) {
                     case "Rock":
-                        return "Rock/Rock Draw"
+                        return "Rock and Rock. You draw."
                         break;
                     case "Paper":
-                        return "Rock/Paper Loss"
+                        computerScore += 1;
+                        return "Paper beats Rock. You lose."
                         break;
                     default:
-                        return "Rock/Scissors Win"
+                        playerScore += 1;
+                        return "Rock beats Scissors. You win."
                         break;
                 }
                 
             } else if (playerSelection == "paper") {
                 switch (computerSelection) {
                     case "Rock":
-                        return "Paper/Rock Win"
+                        playerScore += 1;
+                        return "Paper beats Rock. You win."
                         break;
                     case "Paper":
-                        return "Paper/Paper Draw"
+                        return "Paper and Paper. You draw."
                         break;
                     default:
-                        return "Paper/Scissors Loss"
+                        computerScore += 1;
+                        return "Scissors beat Paper. You lose."
                         break;
                 }
                 
             } else {
                 switch (computerSelection) {
                     case "Rock":
-                        return "Scissors/Rock Loss"
+                        computerScore += 1;
+                        return "Rock beats Scissors. You lose."
                         break;
                     case "Paper":
-                        return "Scissors/Paper Win"
+                        playerScore += 1;
+                        return "Scissors beat Paper. You win."
                         break;
                     default:
-                        return "Scissors/Scissors Draw"
+                        return "Scissors and Scissors. You draw."
                         break;
                 }
+            }
+        }
+
+        function game(){
+            playerScore = 0;
+            computerScore = 0;
+            for (let index = 0; index < 5; index++) {
+                let playerSelection = prompt("Rock/Paper/Scissors?");
+                console.log(playRound(playerSelection.toLowerCase(),computerPlay()));
+                console.log("Player's Score: " + playerScore);
+                console.log("Computer's Score: " + computerScore);
+            }
+            if (playerScore > computerScore) {
+                console.log("You win. Final score - Player " + playerScore + " vs Computer " + computerScore);
+            } else if (playerScore < computerScore) {
+                console.log("You lose. Final score - Player " + playerScore + " vs Computer " + computerScore);
+            } else {
+                console.log("You drew. Final score - Player " + playerScore + " vs Computer " + computerScore);
             }
         }
     </script>
