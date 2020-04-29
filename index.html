@@ -5,9 +5,11 @@
 </head>
 <body>
     <script>
+
         function getRandomInt(){
             return Math.floor(Math.random() * Math.floor(3));
         }
+
         function computerPlay(){
             let randomInt = getRandomInt();
             switch (randomInt) {
@@ -20,6 +22,48 @@
                 default:
                     return "Scissors"
                     break;
+            }
+        }
+
+        function playRound(playerSelection, computerSelection){
+            if (playerSelection == "rock") {
+                switch (computerSelection) {
+                    case "Rock":
+                        return "Rock/Rock Draw"
+                        break;
+                    case "Paper":
+                        return "Rock/Paper Loss"
+                        break;
+                    default:
+                        return "Rock/Scissors Win"
+                        break;
+                }
+                
+            } else if (playerSelection == "paper") {
+                switch (computerSelection) {
+                    case "Rock":
+                        return "Paper/Rock Win"
+                        break;
+                    case "Paper":
+                        return "Paper/Paper Draw"
+                        break;
+                    default:
+                        return "Paper/Scissors Loss"
+                        break;
+                }
+                
+            } else {
+                switch (computerSelection) {
+                    case "Rock":
+                        return "Scissors/Rock Loss"
+                        break;
+                    case "Paper":
+                        return "Scissors/Paper Win"
+                        break;
+                    default:
+                        return "Scissors/Scissors Draw"
+                        break;
+                }
             }
         }
     </script>
