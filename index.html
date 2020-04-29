@@ -8,22 +8,14 @@
         let playerScore = 0;
         let computerScore = 0;
 
-        //function getRandomInt(){
-        //    return Math.floor(Math.random() * Math.floor(3));
-        //}
-
         function computerPlay(){
-            let randomInt = Math.floor(Math.random() * Math.floor(3));
-            switch (randomInt) {
-                case 0:
-                    return "Rock";
-                    break;
-                case 1:
-                    return "Paper";
-                    break;
-                default:
-                    return "Scissors"
-                    break;
+            let randomInt = Math.floor(Math.random() * 3);
+            if (randomInt == 0) {
+                return "Rock";
+            } else if (randomInt == 1) {
+                return "Paper";
+            } else {
+                return "Scissors";
             }
         }
 
