@@ -9,14 +9,8 @@
         let computerScore = 0;
 
         function computerPlay(){
-            let randomInt = Math.floor(Math.random() * 3);
-            if (randomInt == 0) {
-                return "Rock";
-            } else if (randomInt == 1) {
-                return "Paper";
-            } else {
-                return "Scissors";
-            }
+            let computerChoices = ['Rock', 'Paper', 'Scissors'];
+            return computerChoices[Math.floor(Math.random() * 3)];
         }
 
         function playRound(playerSelection, computerSelection){
@@ -70,19 +64,27 @@
         function game(){
             playerScore = 0;
             computerScore = 0;
+            let outcome = "result";
+
             for (let index = 0; index < 5; index++) {
                 let playerSelection = prompt("Rock/Paper/Scissors?");
                 console.log(playRound(playerSelection.toLowerCase(),computerPlay()));
                 console.log("Player's Score: " + playerScore);
                 console.log("Computer's Score: " + computerScore);
             }
+
             if (playerScore > computerScore) {
-                console.log("You win. Final score - Player " + playerScore + " vs Computer " + computerScore);
+                outcome = "win";
             } else if (playerScore < computerScore) {
-                console.log("You lose. Final score - Player " + playerScore + " vs Computer " + computerScore);
+                outcome = "lose";
             } else {
-                console.log("You drew. Final score - Player " + playerScore + " vs Computer " + computerScore);
+                outcome = "drew";
             }
+
+            console.log(`You ${outcome}.
+                    Final Score:
+                    Player   = ${playerScore}. 
+                    Computer = ${computerScore}.`);
         }
     </script>
 </body>
